@@ -1,0 +1,15 @@
+<?php foreach($this->items as $item): ?>
+<div class="container_infobox">
+    <div class="infobox">
+        <div class="infobox_boxheader">
+            <h3><?php echo $item['description']; ?></h3>
+        </div>
+        <div class="infobox_boxbody">
+            <p><?php echo $item['opt4text']; ?></p>
+        </div>
+        <div class="infobox_boxfooter">
+            <a href="<?php echo lw_page::getInstance($this->newsid)->getUrl().'#'.$item['id']; ?>"><span>mehr</span></a>
+        </div>
+    </div>
+</div>
+<?php endforeach; ?>

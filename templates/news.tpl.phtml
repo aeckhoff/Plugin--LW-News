@@ -1,0 +1,31 @@
+<link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo $this->rsslink; ?>">
+
+<h1 style="display:none;">Aktuelles <a href="<?php echo $this->rsslink; ?>" target="_blank" ><img style="display:none;" src="<?php echo $this->config['url']['web_resource']; ?>layout/icons/icon_rss.gif" title="RSS Feed abonnieren" /></a></h1>
+
+<div class="newsliste">
+    <?php if (count($this->items)>0): foreach($this->items as $item): ?>
+    <a name="<?php echo $item['id']; ?>"></a>
+    <h2 class="dotted"><?php echo $item['description']; ?></h2>
+    
+    <span class="datum"><?php echo $this->formatDate($item['free_date']); ?></span>
+    <br/>
+    <span class="teasertext">
+        <?php echo $item['info']; ?>
+    </span>
+
+    <?php if(strlen($item['url'])>0): ?>
+    <!-- standard element! -->
+    <ul class="newslinks">
+        <li>
+            <span class="link"><a href="<?php echo $item['url']; ?>" <?php if($item['opt7text'] == "_blank"): ?>target="_blank" <?php endif; ?> class="<?php echo $item['opt6text']; ?>" <?php if($item['opt6text'] == "extern"): ?> title="neues Fenster mit URL: <?php echo $item['url']; ?>" <?php endif; ?>>
+                <span class="name"><?php if(strlen($item['opt1text'])>0): echo $item['opt1text']; else: echo $item['url']; endif; ?></span>
+            </a></span>
+            <?php if(strlen($item['opt2text'])>0): ?><span class="beschreibung"><?php echo $item['opt2text']; ?></span><?php endif; ?>
+        </li>
+    </ul>
+    <?php  endif; ?>
+    <br/><br/>
+    <?php endforeach; else: ?>
+    <p>Es liegen derzeit keine Meldungen vor.</p>
+    <?php endif; ?>
+</div>
